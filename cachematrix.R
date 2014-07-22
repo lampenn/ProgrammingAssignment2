@@ -31,15 +31,14 @@ makeCacheMatrix <- function(x = matrix()) {
 cacheSolve <- function(x, ...) {
      
      m <- x$getinverse()
-     newm <- x$get()
      
-     
-     if(!is.null(m) && identical(m, solve(newm))) {
-          message("matrix already calculated")
+     if(!is.null(m)) {
+          message("matrix already exists")
           return(m)
      }
-     
-     m <- solve(newm)
+
+     mtemp <- x$get()
+     m <- solve(mtemp)
      x$setinverse(m)
      m
      
